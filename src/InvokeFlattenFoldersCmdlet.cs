@@ -5,10 +5,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Runtime.CompilerServices;
 using System.Security.Permissions;
-using FlattenFolders.Models;
+using FMFlattenFolders.Models;
 
-[assembly: InternalsVisibleTo("PsFlattenFoldersCmdlet.Tests")]
-namespace FlattenFolders;
+namespace FMFlattenFolders;
 
 /// <summary>
 /// <para type="synopsis">Moves files from all sub-directories to the parent directory and optionally delete sub-directories.</para>
@@ -44,7 +43,7 @@ namespace FlattenFolders;
 ///     <code>PS C:\> "C:\Videos\","C:\Music\" | Invoke-FlattenFolders</code>
 /// </example>
 /// </summary>
-[Cmdlet(VerbsLifecycle.Invoke, "FlattenFolders", HelpUri = "https://github.com/trossr32/ps-flatten-folders")]
+[Cmdlet(VerbsLifecycle.Invoke, "FlattenFolders", HelpUri = "https://github.com/futuremotiondev/FMFlattenFolders")]
 public class InvokeFlattenFoldersCmdlet : PSCmdlet
 {
 

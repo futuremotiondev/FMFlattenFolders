@@ -2,21 +2,24 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Version>2.0.0</Version>
-    <AssemblyName>FlattenFolders</AssemblyName>
-    <RootNamespace>FlattenFolders</RootNamespace>
+    <AssemblyName>FMFlattenFolders</AssemblyName>
+    <RootNamespace>FMFlattenFolders</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\Dev\Powershell\VSYSModulesWorking\ps-flatten-folders-fm\src\PsFlattenFoldersCmdlet\FlattenFolders.xml</DocumentationFile>
+    <DocumentationFile>D:\Dev\Powershell\VSYSModulesWorking\FMFlattenFolders\src\FMFlattenFolders.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Dev\Powershell\VSYSModulesWorking\FMFlattenFolders\src\FMFlattenFolders.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="PowerShellStandard.Library" Version="7.0.0-preview.1" />
     <PackageReference Include="System.Security.Permissions" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="FlattenFolders.psd1">
+    <None Update="FMFlattenFolders.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="FlattenFolders.dll-Help.xml">
+    <None Update="FMFlattenFolders.dll-Help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

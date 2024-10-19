@@ -11,13 +11,13 @@
 	<command:noun>FlattenFolders</command:noun>
 	<maml:description>
 	  <maml:para>
-		Moves files from all sub-directories to the parent directory and optionally delete sub-directories.
+		Moves files from all sub-directories to the parent directory and optionally delete sub-directories. Duplicate files can be renamed by appending an index or GUID (-RenameMethod)
 	  </maml:para>
 	</maml:description>
   </command:details>
   <maml:description>
 	<maml:para>
-	  Moves files from all sub-directories to the parent directory. If files with duplicate names are found then their file name will have a GUID appended to make them unique.
+	  Moves files from all sub-directories to the parent directory. Duplicate files can be renamed by appending an index or GUID (-RenameMethod)
 	</maml:para>
 	<maml:para>
 	  Supports WhatIf. If supplied this will output a formatted table of the from and to file locations that will result from running the cmdlet.

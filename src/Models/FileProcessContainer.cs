@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace FlattenFolders.Models;
+namespace FMFlattenFolders.Models;
 
 internal enum RenameStrategy
 {

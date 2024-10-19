@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>FlattenFolders</name>
+        <name>FMFlattenFolders</name>
     </assembly>
     <members>
-        <member name="T:FlattenFolders.InvokeFlattenFoldersCmdlet">
+        <member name="T:FMFlattenFolders.InvokeFlattenFoldersCmdlet">
             <summary>
-            <para type="synopsis">Moves files from all sub-directories to the parent directory and optionally delete sub-directories.</para>
+            <para type="synopsis">Moves files from all sub-directories to the parent directory and optionally delete sub-directories. Supports renaming duplicates by index or GUID.</para>
             <para type="description">
             Moves files from all sub-directories to the parent directory.If files with duplicate names are found then their file name will have a GUID appended to make them unique.
             </para>
@@ -31,17 +31,17 @@
                 <code>PS C:\> Invoke-FlattenFolders -Directory "C:\Videos" -WhatIf</code>
             </example>
             <example>
-                <para>All files in all sub-directories in C:\Videos\ will be moved to C:\Videos\ and all sub-directories will be deleted once the files have been moved:</para>
-                <code>PS C:\> Invoke-FlattenFolders -Directory "C:\Videos" -DeleteSubDirectories</code>
+                <para>All files in all sub-directories in C:\Videos\ will be moved to C:\Videos\ and all sub-directories will be deleted once the files have been moved. Duplicate files will be renamed by appending a numeric index.</para>
+                <code>PS C:\> Invoke-FlattenFolders -Directory "C:\Videos" -DeleteSubDirectories -RenameMethod Index</code>
             </example>
             <example>
-                <para>All files in all sub-directories in the piped array of directories(C:\Videos\ and C:\Music\) will be moved to their respective parents:</para>
-                <code>PS C:\> "C:\Videos\","C:\Music\" | Invoke-FlattenFolders</code>
+                <para>All files in all sub-directories in the piped array of directories(C:\Videos\ and C:\Music\) will be moved to their respective parents. Duplicate files will be renamed by appending a GUID.</para>
+                <code>PS C:\> "C:\Videos\","C:\Music\" | Invoke-FlattenFolders -RenameMethod GUID</code>
             </example>
-            <para type="link" uri="(https://github.com/trossr32/ps-flatten-folders)">[Github]</para>
+            <para type="link" uri="(https://github.com/futuremotiondev/FMFlattenFolders)">[Github]</para>
             </summary>
         </member>
-        <member name="P:FlattenFolders.InvokeFlattenFoldersCmdlet.Directory">
+        <member name="P:FMFlattenFolders.InvokeFlattenFoldersCmdlet.Directory">
             <summary>
             <para type="description">
             The parent directory where files from all sub-directories will be moved.
@@ -49,7 +49,7 @@
             </para>
             </summary>
         </member>
-        <member name="P:FlattenFolders.InvokeFlattenFoldersCmdlet.Directories">
+        <member name="P:FMFlattenFolders.InvokeFlattenFoldersCmdlet.Directories">
             <summary>
             <para type="description">
             A collection of parent directories where files from all sub-directories will be moved.
@@ -57,44 +57,51 @@
             </para>
             </summary>
         </member>
-        <member name="P:FlattenFolders.InvokeFlattenFoldersCmdlet.WhatIf">
+        <member name="P:FMFlattenFolders.InvokeFlattenFoldersCmdlet.WhatIf">
             <summary>
             <para type="description">
             If supplied this will output a formatted table of the from and to file locations that will result from running the cmdlet.
             </para>
             </summary>
         </member>
-        <member name="P:FlattenFolders.InvokeFlattenFoldersCmdlet.DeleteSubDirectories">
+        <member name="P:FMFlattenFolders.InvokeFlattenFoldersCmdlet.DeleteSubDirectories">
             <summary>
             <para type="description">
             If supplied all subdirectories will be deleted once all files have been moved.
             </para>
             </summary>
         </member>
-        <member name="M:FlattenFolders.InvokeFlattenFoldersCmdlet.BeginProcessing">
+        <member name="P:FMFlattenFolders.InvokeFlattenFoldersCmdlet.RenameMethod">
             <summary>
-            Implements the <see cref="M:FlattenFolders.InvokeFlattenFoldersCmdlet.BeginProcessing"/> method for <see cref="T:FlattenFolders.InvokeFlattenFoldersCmdlet"/>.
+            <para type="description">
+                The strategy for renaming duplicate files. Valid values are "Guid" or "Index". Defaults to Index.
+            </para>
+            </summary>
+        </member>
+        <member name="M:FMFlattenFolders.InvokeFlattenFoldersCmdlet.BeginProcessing">
+            <summary>
+            Implements the <see cref="M:FMFlattenFolders.InvokeFlattenFoldersCmdlet.BeginProcessing"/> method for <see cref="T:FlattenFolders.InvokeFlattenFoldersCmdlet"/>.
             Initialise temporary containers
             </summary>
         </member>
-        <member name="M:FlattenFolders.InvokeFlattenFoldersCmdlet.ProcessRecord">
+        <member name="M:FMFlattenFolders.InvokeFlattenFoldersCmdlet.ProcessRecord">
             <summary>
-            Implements the <see cref="M:FlattenFolders.InvokeFlattenFoldersCmdlet.ProcessRecord"/> method for <see cref="T:FlattenFolders.InvokeFlattenFoldersCmdlet"/>.
+            Implements the <see cref="M:FMFlattenFolders.InvokeFlattenFoldersCmdlet.ProcessRecord"/> method for <see cref="T:FlattenFolders.InvokeFlattenFoldersCmdlet"/>.
             Validates input directory/directories exist and builds a list of directories to process in the EndProcessing method.
             </summary>
         </member>
-        <member name="M:FlattenFolders.InvokeFlattenFoldersCmdlet.EndProcessing">
+        <member name="M:FMFlattenFolders.InvokeFlattenFoldersCmdlet.EndProcessing">
             <summary>
-            Implements the <see cref="M:FlattenFolders.InvokeFlattenFoldersCmdlet.EndProcessing"/> method for <see cref="T:FlattenFolders.InvokeFlattenFoldersCmdlet"/>.
+            Implements the <see cref="M:FMFlattenFolders.InvokeFlattenFoldersCmdlet.EndProcessing"/> method for <see cref="T:FlattenFolders.InvokeFlattenFoldersCmdlet"/>.
             Perform the folder flattening on the configured directories.
             </summary>
         </member>
-        <member name="M:FlattenFolders.InvokeFlattenFoldersCmdlet.ProcessWhatIf">
+        <member name="M:FMFlattenFolders.InvokeFlattenFoldersCmdlet.ProcessWhatIf">
             <summary>
             A WhatIf switch parameter was passed so calculate what will happen and output a table to terminal
             </summary>
         </member>
-        <member name="M:FlattenFolders.InvokeFlattenFoldersCmdlet.ValidateMovePermissions">
+        <member name="M:FMFlattenFolders.InvokeFlattenFoldersCmdlet.ValidateMovePermissions">
             <summary>
             Validates whether the user has write permissions to the file sin the supplied directories
             </summary>

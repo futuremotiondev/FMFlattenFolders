@@ -1,4 +1,4 @@
-﻿namespace FlattenFolders.Models;
+﻿namespace FMFlattenFolders.Models;
 
 internal class SourceFile
 {
