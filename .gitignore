@@ -353,3 +353,4 @@ MigrationBackup/
 scripts/
 
 *.code-workspace
+Build.ps1

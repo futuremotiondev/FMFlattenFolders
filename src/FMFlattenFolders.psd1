@@ -12,7 +12,7 @@
     RootModule           = 'FMFlattenFolders.dll'
 
     # Version number of this module.
-    ModuleVersion        = '2.0.1'
+    ModuleVersion        = '2.0.2'
 
     # Supported PSEditions
     CompatiblePSEditions = 'Core'
@@ -31,7 +31,7 @@
     Copyright            = '(c) 2024 Futuremotion. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description          = 'A Powershell module that moves files from all sub-directories to the parent directory. Modified version by Futuremotion to include additional renaming options.'
+    Description          = 'Moves files from all sub-directories to the parent directory. Originally created by Rob Green. Modified version to include additional duplicate renaming options.'
 
     # Minimum version of the Windows PowerShell engine required by this module
     PowerShellVersion    = '7.0'
