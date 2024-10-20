@@ -2,11 +2,8 @@
 
 This is a modified version of FlattenFolders by [Rob Green](https://github.com/trossr32/ps-flatten-folders). I've simply added an additional method of renaming duplicate files.
 
-<img alt="PowerShell Gallery Version" src="https://img.shields.io/powershellgallery/v/FMFlattenFolders?link=https%3A%2F%2Fwww.powershellgallery.com%2Fpackages%2FFMFlattenFolders%2F2.0.2">
-<img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/futuremotiondev/FMFlattenFolders/main?link=https%3A%2F%2Fgithub.com%2Ffuturemotiondev%2FFMFlattenFolders&link=https%3A%2F%2Fgithub.com%2Ffuturemotiondev%2FFMFlattenFolders">
-
-
-
+[![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/FMFlattenFolders)](https://www.powershellgallery.com/packages/FMFlattenFolders/2.0.2)
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 ## Installation (from the Powershell Gallery)
 
