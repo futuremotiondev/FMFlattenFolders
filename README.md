@@ -6,7 +6,7 @@ This is a modified version of FlattenFolders by [Rob Green](https://github.com/t
 
 The original module only renames duplicates by adding a GUID. In my opinion this is kind of heavy-handed. But the option is still available if desired.
 
-<a href="https://www.powershellgallery.com/packages/FMFlattenFolders"><img src="https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/gallery-badge.png" alt="Description" height="26"></a>
+<a href="https://www.powershellgallery.com/packages/FMFlattenFolders/2.0.5"><img src="https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/gallery-badge.png" alt="Description" height="26"></a>
 <a href="./LICENSE.md"><img src="https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/license-badge.png" alt="Description" height="26"></a>
 
 ## Installation (from the Powershell Gallery)
