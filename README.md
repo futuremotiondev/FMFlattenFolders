@@ -4,8 +4,8 @@
 
 This is a modified version of FlattenFolders by [Rob Green](https://github.com/trossr32/ps-flatten-folders). I've simply added an additional method of renaming duplicate files.
 
-[![PowerShell Gallery Version](https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/gallery-badge.png)](https://www.powershellgallery.com/packages/FMFlattenFolders)
-[![License](https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/license-badge.png)](./LICENSE.md)
+<a href="https://www.powershellgallery.com/packages/FMFlattenFolders"><img src="https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/gallery-badge.png" alt="Description" height="26"></a>
+<a href="./LICENSE.md"><img src="https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/license-badge.png" alt="Description" height="26"></a>
 
 ## Installation (from the Powershell Gallery)
 
