@@ -353,8 +353,4 @@ MigrationBackup/
 scripts/
 
 *.code-workspace
-omnisharp.json
-old-help/
-build/
-old/
-Publish.ps1
+bin/
