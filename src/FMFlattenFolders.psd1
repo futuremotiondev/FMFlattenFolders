@@ -12,7 +12,7 @@
     RootModule           = 'FMFlattenFolders.dll'
 
     # Version number of this module.
-    ModuleVersion        = '2.0.3'
+    ModuleVersion        = '2.0.4'
 
     # Supported PSEditions
     CompatiblePSEditions = 'Core'
@@ -28,7 +28,7 @@
     CompanyName          = 'Futuremotion'
 
     # Copyright statement for this module
-    Copyright            = '(c) 2024 Futuremotion. All rights reserved.'
+    Copyright            = '(c) 2025 Futuremotion. All rights reserved.'
 
     # Description of the functionality provided by this module
     Description          = 'Moves files from all sub-directories to the parent directory. Originally created by Rob Green. Modified version to include additional duplicate renaming options.'

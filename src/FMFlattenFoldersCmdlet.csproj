@@ -4,13 +4,16 @@
     <Version>2.0.0</Version>
     <AssemblyName>FMFlattenFolders</AssemblyName>
     <RootNamespace>FMFlattenFolders</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>true</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\Dev\Powershell\VSYSModulesWorking\FMFlattenFolders\src\FMFlattenFolders.xml</DocumentationFile>
+    <DocumentationFile>D:\Dev\Powershell\FMModulesWorking\FMFlattenFolders\src\FMFlattenFolders.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>D:\Dev\Powershell\VSYSModulesWorking\FMFlattenFolders\src\FMFlattenFolders.xml</DocumentationFile>
+    <DocumentationFile>D:\Dev\Powershell\FMModulesWorking\FMFlattenFolders\src\FMFlattenFolders.xml</DocumentationFile>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="PowerShellStandard.Library" Version="7.0.0-preview.1" />
     <PackageReference Include="System.Security.Permissions" Version="8.0.0" />

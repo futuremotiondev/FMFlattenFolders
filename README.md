@@ -1,3 +1,7 @@
+<img src="assets/ps7_icon_256.png" alt="Description" width="130">
+
+<br/>
+
 # FMFlattenFolders
 
 This is a modified version of FlattenFolders by [Rob Green](https://github.com/trossr32/ps-flatten-folders). I've simply added an additional method of renaming duplicate files.
@@ -18,52 +22,75 @@ Moves files from all sub-directories to the parent directory. If files with dupl
 
 The cmdlet also Supports `-WhatIf`. If supplied this will output a formatted table of the final locations of all files.
 
+## Changelog (v2.0.4)
+
+- Fixed incorrect handling of duplicate indexes.
+- Fixed case where empty subdirectories were not being deleted despite `-DeleteSubdirectories` being specified.
+- Optimized and reduced unneeded redundancy in much of the code
+- Added some more descriptive comments in code.
+
 ## Usage
 
-The below will completely flatten `C:\Music`, copying all files in all subdirectories recursively to the root.
+### Example 1
 
 ```powershell
-Invoke-FlattenFolders -Directory "C:\Music"
+Invoke-FlattenFolders -Directory "C:\Icons\SVG Sets" -RenameMethod Index -DeleteSubdirectories
 ```
 
-The below will completely flatten `D:\Icons\SVG`, copying all files in all subdirectories recursively to the root, and on completion delete all empty subdirectories after the move.
+All files in all sub-directories of "C:\Icons\SVG Sets" will be moved to "C:\Icons\SVG Sets". Duplicate files will be renamed with an appended index. All remaining empty subdirectories will be deleted once the files have been moved.
+
+### Example 2
 
 ```powershell
-Invoke-FlattenFolders -Directory "D:\Icons\SVG" -DeleteSubDirectories
+Invoke-FlattenFolders -Directories "C:\Videos", "C:\Music" -RenameMethod GUID -DeleteSubdirectories
 ```
 
-You can also pipe multiple directories to flatten in an array:
+All files in all sub-directories in "C:\Videos" will be moved to "C:\Videos", and all files in all sub-directories of "C:\Music" will be moved to "C:\Music". Duplicate files will be renamed with an appended GUID. All remaining empty subdirectories will be deleted once the files have been moved.
+
+### Example 3
 
 ```powershell
-@("C:\MyVideos", "C:\ConvertedAudio", "D:\SomeOther\Directory") |
-Invoke-FlattenFolders -DeleteSubDirectories
+"C:\Videos\","C:\Music\" | Invoke-FlattenFolders -DeleteSubdirectories
 ```
 
-`-RenameMethod` determines how duplicate files are handled during the directory flattening operation.
+All files in all sub-directories in the piped array of directories( "C:\Videos\" and "C:\Music\" ) will be moved to their respective parent folders. All remaining empty subdirectories will be deleted once the files have been moved.
 
-`-RenameMethod Index` will append a numeric index to the end of duplicate files.
-
-`-RenameMethod GUID` will append a random GUID to the end of duplicate files.
+### Example 4
 
 ```powershell
-Invoke-FlattenFolders -Directory "D:\Icons\SVG" -DeleteSubDirectories -RenameMethod Index
+Invoke-FlattenFolders -Directory "C:\Videos" -WhatIf
 ```
+
+Displays an output table to the console detailing the flattening operation without actually modifying any files on disk.
 
 ## Parameters
 
-#### `-Directory` (alias -D)
-*Optional*. The parent directory where files from all sub-directories will be moved. If neither this nor the Directories parameter are set then the current location will be used.
+`-Directory` (alias `-dir`)
 
-#### `-Directories`
-*Optional*. A collection of parent directories where files from all sub-directories will be moved. If neither this nor the Directory parameter are set then the current location will be used.
+**Optional**. The parent directory where files from all sub-directories will be moved. If neither this nor the Directories parameter are set then the current location will be used.
 
-#### `-WhatIf`
-*Optional*. If supplied this will output a formatted table of the from and to file locations that will result from running the cmdlet.
+`-Directories` (alias `-dirs`)
 
-#### `-DeleteSubDirectories` (alias -DS)
-*Optional*. If supplied all sub-directories will be deleted once all files have been moved.
+**Optional**. A collection of parent directories where files from all sub-directories will be moved. If neither this nor the Directory parameter are set then the current location will be used.
 
-#### `-RenameMethod` (alias -RM)
-*Optional*. The strategy for renaming duplicate files. Valid values are "Guid" or "Index". Defaults to Index.
+`-RenameMethod` (alias `-method`, `-m`)
+
+**Optional**. The strategy for renaming duplicate files. Valid values are "Guid" or "Index". Defaults to Index.
+
+`-IndexZeroPadding` (alias `-pad`, `-p`)
+
+**Optional**. The amount of zero padding to apply to indexes when the RenameMethod is set to 'Index'. For instance, if `-IndexZeroPadding` is set to 3, duplicates will have suffixes like `file_002`, `file_003`, etc.
+
+`-DeleteSubDirectories` (alias `-del`, `-d`)
+
+**Optional**. If supplied all sub-directories will be deleted once all files have been moved.
+
+`-WhatIf`
+
+**Optional**. If supplied this will output a formatted table of the from and to file locations that will result from running the cmdlet.
+
+
+
+
 
 

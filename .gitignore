@@ -353,4 +353,7 @@ MigrationBackup/
 scripts/
 
 *.code-workspace
-Build.ps1
+omnisharp.json
+old-help/
+build/
+old/

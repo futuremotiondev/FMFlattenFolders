@@ -3,75 +3,65 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace FMFlattenFolders.Models;
-
-internal enum RenameStrategy
-{
-    Guid,
-    Index
-}
-
-internal class FileProcessContainer
-{
-    internal FileProcessContainer()
-    {
-        Files = new List<SourceFile>();
-        SourceDirectories = new List<string>();
-        RenameOption = RenameStrategy.Guid; // Default strategy
+namespace FMFlattenFolders.Models {
+    internal enum RenameStrategy {
+        Guid = 0,
+        Index = 1
     }
 
-    internal List<SourceFile> Files { get; set; }
-    internal List<string> SourceDirectories { get; set; }
-    internal List<FileMapping> FileMappings { get; private set; }
-    internal int SubDirectoryCount { get; set; }
-    internal RenameStrategy RenameOption { get; set; } // New property
+    internal class FileProcessContainer {
+        internal FileProcessContainer() {
+            Files = [];
+            SourceDirectories = [];
+            FileMappings = [];
+            IndexZeroPadding = 2;
+            RenameOption = RenameStrategy.Index; // Default rename strategy
+        }
 
-    internal void BuildDuplicatesAndFileMappings()
-    {
-        var duplicates = Files
-            .GroupBy(f => f.Name)
-            .Where(g => g.Count() > 1)
-            .Select(g => g.Key)
-            .ToList();
+        internal List<SourceFile> Files { get; set; }
+        internal List<string> SourceDirectories { get; set; }
+        internal List<FileMapping> FileMappings { get; private set; }
+        internal int SubDirectoryCount { get; set; }
+        internal int IndexZeroPadding { get; set; }
+        internal RenameStrategy RenameOption { get; set; }
 
-        var duplicateIndexTracker = new Dictionary<string, int>();
+        internal void BuildDuplicatesAndFileMappings() {
+            // Identify duplicate file names
+            List<string> duplicates = Files
+                .GroupBy(f => f.Name)
+                .Where(g => g.Count() > 1)
+                .Select(g => g.Key)
+                .ToList();
 
-        FileMappings = Files.Select(file =>
-        {
-            string fileName;
+            // Initialize dictionary correctly
+            Dictionary<string, int> duplicateIndexTracker = [];
 
-            if (duplicates.Contains(file.Name))
-            {
-                switch (RenameOption)
-                {
-                    case RenameStrategy.Guid:
-                        fileName = $"{Path.GetFileNameWithoutExtension(file.Name)}_{Guid.NewGuid()}{Path.GetExtension(file.Name)}";
-                        break;
+            // Use LINQ Select for clarity and efficiency
 
-                    case RenameStrategy.Index:
-                        if (!duplicateIndexTracker.ContainsKey(file.Name))
-                        {
-                            duplicateIndexTracker[file.Name] = 1; // Start index at 1
-                        }
-                        else
-                        {
-                            duplicateIndexTracker[file.Name]++;
-                        }
+            FileMappings = Files.Select(file => {
+                string fileName = duplicates.Contains(file.Name) ?
+                    RenameOption switch {
+                        RenameStrategy.Guid => $"{Path.GetFileNameWithoutExtension(file.Name)}_{Guid.NewGuid()}{Path.GetExtension(file.Name)}",
+                        RenameStrategy.Index => GetUniqueNameIfDuplicate(file.Name, duplicateIndexTracker, IndexZeroPadding),
+                        _ => file.Name
+                    } : file.Name;
 
-                        fileName = $"{Path.GetFileNameWithoutExtension(file.Name)}_{duplicateIndexTracker[file.Name]}{Path.GetExtension(file.Name)}";
-                        break;
+                return new FileMapping(file.File, Path.Combine(file.ParentDir ?? string.Empty, fileName));
+            }).ToList(); // Convert to list after selection
+        }
 
-                    default:
-                        fileName = file.Name;
-                        break;
-                }
+        internal static string GetUniqueNameIfDuplicate(string fileName, Dictionary<string, int> duplicateIndexTracker, int padding) {
+            if (!duplicateIndexTracker.TryGetValue(fileName, out int currentIndex)) {
+                // Key does not exist, initialize it
+                duplicateIndexTracker[fileName] = 1; // Start index at 1
             }
-            else
-            {
-                fileName = file.Name;
+            else {
+                // Key exists, increment the index
+                duplicateIndexTracker[fileName] = currentIndex + 1;
             }
-
-            return new FileMapping(file.File, Path.Combine(file.ParentDir, fileName));
-        }).ToList();
+            // Format the index with zero padding
+            string paddedIndex = duplicateIndexTracker[fileName].ToString($"D{padding}");
+            return $"{Path.GetFileNameWithoutExtension(fileName)}_{paddedIndex}{Path.GetExtension(fileName)}";
+        }
     }
 }
