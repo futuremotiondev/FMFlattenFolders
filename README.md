@@ -1,6 +1,5 @@
 <img src="assets/ps7_icon_256.png" alt="Description" width="130">
 
-<br/>
 
 # FMFlattenFolders
 
