@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/FMFlattenFoldersLogo.png" alt="Description" width="300">
+<img src="https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/FMFlattenFoldersLogo.png" alt="Description" width="180">
 
 # FMFlattenFolders
 
