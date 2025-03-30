@@ -2,7 +2,9 @@
 
 # FMFlattenFolders
 
-This is a modified version of FlattenFolders by [Rob Green](https://github.com/trossr32/ps-flatten-folders). I've simply added an additional method of renaming duplicate files.
+This is a modified version of FlattenFolders by [Rob Green](https://github.com/trossr32/ps-flatten-folders). I've added an additional method of renaming duplicate files by inserting a numerical index as a suffix, as well as control of the zero-padding for said suffix.
+
+The original module only renames duplicates by adding a GUID. In my opinion this is kind of heavy-handed. But the option is still available if desired.
 
 <a href="https://www.powershellgallery.com/packages/FMFlattenFolders"><img src="https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/gallery-badge.png" alt="Description" height="26"></a>
 <a href="./LICENSE.md"><img src="https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/license-badge.png" alt="Description" height="26"></a>

@@ -40,11 +40,5 @@ function Build-Module {
     Pop-Location -StackName Build
 }
 
-function Publish-ToPSGallery {
-    if(Test-Path -LiteralPath $BuildReleasePath -PathType Container){
-        Publish-PSResource -Path $BuildReleasePath -Repository PSGallery -APIKey $NuGetAPIKey -Verbose
-    }
-}
-
 Build-Module
-# Publish-ToPSGallery
+#Publish-PSResource -Path $BuildReleasePath -Repository PSGallery -APIKey $NuGetAPIKey -Verbose
