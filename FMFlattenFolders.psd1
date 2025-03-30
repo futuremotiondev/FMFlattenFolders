@@ -12,7 +12,7 @@
     RootModule           = 'FMFlattenFolders.dll'
 
     # Version number of this module.
-    ModuleVersion        = '2.0.4'
+    ModuleVersion        = '2.0.5'
 
     # Supported PSEditions
     CompatiblePSEditions = 'Core'
@@ -96,10 +96,10 @@
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags       = 'Directory', 'Sub-directory', 'Flatten', 'Folders'
+            Tags = 'Directory', 'Sub-directory', 'Subdirectory', 'Flatten', 'Folders', 'Merge'
 
             # A URL to the license for this module.
-            LicenseUri = 'https://github.com/futuremotiondev/FMFlattenFolders/blob/main/LICENSE'
+            LicenseUri = 'https://github.com/futuremotiondev/FMFlattenFolders/blob/main/LICENSE.md'
 
             # A URL to the main website for this project.
             ProjectUri = 'https://github.com/futuremotiondev/FMFlattenFolders'

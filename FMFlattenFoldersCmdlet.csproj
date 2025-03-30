@@ -8,10 +8,10 @@
     <AppendRuntimeIdentifierToOutputPath>true</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\Dev\Powershell\FMModulesWorking\FMFlattenFolders\src\FMFlattenFolders.xml</DocumentationFile>
+    <DocumentationFile>D:\Dev\Powershell\FMModulesWorking\FMFlattenFolders\FMFlattenFolders.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>D:\Dev\Powershell\FMModulesWorking\FMFlattenFolders\src\FMFlattenFolders.xml</DocumentationFile>
+    <DocumentationFile>D:\Dev\Powershell\FMModulesWorking\FMFlattenFolders\FMFlattenFolders.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

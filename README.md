@@ -1,12 +1,11 @@
-<img src="assets/ps7_icon_256.png" alt="Description" width="130">
-
+<img src="https://raw.githubusercontent.com/futuremotiondev/FMFlattenFolders/refs/heads/main/assets/FMFlattenFoldersLogo.png" alt="Description" width="300">
 
 # FMFlattenFolders
 
 This is a modified version of FlattenFolders by [Rob Green](https://github.com/trossr32/ps-flatten-folders). I've simply added an additional method of renaming duplicate files.
 
-[![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/FMFlattenFolders)](https://www.powershellgallery.com/packages/FMFlattenFolders/2.0.2)
-[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+[![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/FMFlattenFolders)](https://www.powershellgallery.com/packages/FMFlattenFolders)
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE.md)
 
 ## Installation (from the Powershell Gallery)
 
@@ -21,12 +20,18 @@ Moves files from all sub-directories to the parent directory. If files with dupl
 
 The cmdlet also Supports `-WhatIf`. If supplied this will output a formatted table of the final locations of all files.
 
-## Changelog (v2.0.4)
+## Changelog
 
-- Fixed incorrect handling of duplicate indexes.
-- Fixed case where empty subdirectories were not being deleted despite `-DeleteSubdirectories` being specified.
-- Optimized and reduced unneeded redundancy in much of the code
-- Added some more descriptive comments in code.
+### v2.0.5
+
+1. Changed `-RenameMethod Index` behavior so that the first file in a set of duplicate files does not get a suffix.
+
+### v2.0.4
+
+1. Fixed incorrect handling of duplicate indexes.
+2. Fixed case where empty subdirectories were not being deleted despite `-DeleteSubdirectories` being specified.
+3. Optimized and reduced unneeded redundancy in much of the code
+4. Added some more descriptive comments in code.
 
 ## Usage
 

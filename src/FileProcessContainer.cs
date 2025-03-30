@@ -59,9 +59,16 @@ namespace FMFlattenFolders.Models {
                 // Key exists, increment the index
                 duplicateIndexTracker[fileName] = currentIndex + 1;
             }
-            // Format the index with zero padding
-            string paddedIndex = duplicateIndexTracker[fileName].ToString($"D{padding}");
-            return $"{Path.GetFileNameWithoutExtension(fileName)}_{paddedIndex}{Path.GetExtension(fileName)}";
+
+            // Dont' rename the file if it's the first duplicate
+            if(duplicateIndexTracker[fileName] == 1){
+                return fileName;
+            }
+            else {
+                // Format the index with zero padding
+                string paddedIndex = duplicateIndexTracker[fileName].ToString($"D{padding}");
+                return $"{Path.GetFileNameWithoutExtension(fileName)}_{paddedIndex}{Path.GetExtension(fileName)}";
+            }
         }
     }
 }
